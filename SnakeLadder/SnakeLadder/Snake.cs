@@ -45,10 +45,6 @@ namespace SnakeLadder
                 }
                 Console.WriteLine($"The player position is {position1}");
                 Console.WriteLine("\n");
-                if (position1 > 100)
-                {
-                    position1 = 0;
-                }
             } while (position1 < 100);
         }
     }
