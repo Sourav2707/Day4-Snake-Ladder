@@ -11,7 +11,10 @@ namespace SnakeLadder
         public void Ladder()
         {
             int position = 0;
-            Console.WriteLine($"The position of player is {position}");
+            Console.WriteLine($"The starting position of player is {position}");
+            Random random = new Random();
+            int dice = random.Next(1, 7);
+            Console.WriteLine($"The number got by dice roll is {dice}");
         }
     }
 }
