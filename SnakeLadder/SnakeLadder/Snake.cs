@@ -14,6 +14,8 @@ namespace SnakeLadder
             int position1 = 0;
             Console.WriteLine($"The starting position of player is {position1}");
             Console.WriteLine("\n");
+            do
+            {
                 Random random = new Random();
                 int dice = random.Next(1, 7);
                 Console.WriteLine($"The number got by dice roll is {dice}");
@@ -43,6 +45,11 @@ namespace SnakeLadder
                 }
                 Console.WriteLine($"The player position is {position1}");
                 Console.WriteLine("\n");
+                if (position1 > 100)
+                {
+                    position1 = 0;
+                }
+            } while (position1 < 100);
         }
     }
 }
