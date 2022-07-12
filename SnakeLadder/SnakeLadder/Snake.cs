@@ -43,6 +43,10 @@ namespace SnakeLadder
                         Console.WriteLine($"No play");
                         break;
                 }
+                if (position1 > 100)
+                {
+                    position1 = 0;
+                }
                 Console.WriteLine($"The player position is {position1}");
                 Console.WriteLine("\n");
             } while (position1 < 100);
