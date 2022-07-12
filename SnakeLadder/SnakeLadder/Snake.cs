@@ -22,24 +22,22 @@ namespace SnakeLadder
                 {
                     case ladder:
                         position += dice;
-                        Console.WriteLine($"The player climed the ladder and moved ahead to the position {position}");
+                        Console.WriteLine("The player climbed the ladder");
                         break;
                     case snake:
                         position -= dice;
                         if(position < 0)
                         {
-                            Console.WriteLine($"The player bit by snake and the position is 0");
-                        }
-                        else
-                        { 
-                            Console.WriteLine($"The player bit by snake and moved behind to the position {position}"); 
+                        Console.WriteLine("The player bit by snake");
+                        position = 0;
                         }
                         break;
                     default:
-                        position = 0;  
-                        Console.WriteLine($"No play and the player stayed in the same position {position}");
+                        position = 0;
+                        Console.WriteLine($"No play");
                         break;
                 }
+            Console.WriteLine($"The player position is {position}");
         }
     }
 }
