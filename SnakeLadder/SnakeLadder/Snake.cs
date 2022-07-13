@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//this program may take 5-10 minutes to show the result
 namespace SnakeLadder
 {
     public class Snake
@@ -11,31 +11,51 @@ namespace SnakeLadder
         public const int ladder = 1, snake = 2;
         public void Ladder()
         {
-            int position1 = 0;
-            int dice = 0;
-            int roll = 0;
-            Console.WriteLine($"The starting position of player is {position1}");
+            Player1 player1 = new Player1();
+            Console.WriteLine($"The starting position of player is {player1.position1}");
             Console.WriteLine("\n");
-            do
+            while ((player1.position1 < player1.win) || (player1.position2 < player1.win))
             {
                 roll++;
-                Random random = new Random();
-                dice = random.Next(1, 7);
-                Console.WriteLine($"The number got by dice roll is {dice}");
+                Console.WriteLine("Player 1: ");
+                player1.play();
+                Console.WriteLine($"The number got by dice roll is {player1.dice1}");
+                Console.WriteLine($"The player position is {player1.position1}");
+                Console.WriteLine("Player 2:");
+                player1.play();
+                Console.WriteLine($"The number got by dice roll is {player1.dice2}");
+                Console.WriteLine($"The player position is {player1.position2}");
+            }
+        }
+        public class Player1
+        {
+            public int position1 = 0, position2 = 0;
+            public int option = 0;
+            public int win = 100;
+            public int dice1 = 0, dice2 = 0;
+            public void play()
+            {
+                Random random1 = new Random();
+                dice1 = random1.Next(1, 7);
                 Random random2 = new Random();
-                int option = random2.Next(0, 3);
+                dice2 = random2.Next(1, 7);
+                Random random3 = new Random();
+                option = random3.Next(0, 3);
                 switch (option)
                 {
                     case ladder:
-                        position1 += dice;
+                        position1 += dice1;
+                        position2 += dice2;
                         Console.WriteLine("The player climbed the ladder");
                         break;
                     case snake:
-                        position1 -= dice;
-                        if (position1 < 0)
+                        position1 -= dice1;
+                        position2 -= dice2;
+                        if ((position1 < 0) || (position2 < 0))
                         {
                             Console.WriteLine("The player bit by snake");
                             position1 = 0;
+                            position2 = 0;
                         }
                         else
                         {
@@ -46,15 +66,12 @@ namespace SnakeLadder
                         Console.WriteLine($"No play");
                         break;
                 }
-                if (position1 > 100)
+                if ((position2 > win) || (position1 > win))
                 {
+                    position2 = 0;
                     position1 = 0;
                 }
-                Console.WriteLine($"The player position is {position1}");
-                Console.WriteLine($"The dice has been rolled {roll} times till now");
-                Console.WriteLine("\n");
-            } while (position1 < 100);
-            Console.WriteLine($"The dice has been rolled {roll} times to reach 100");
+            }
         }
     }
 }
