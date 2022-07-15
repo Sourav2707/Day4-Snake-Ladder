@@ -15,7 +15,7 @@ namespace SnakeLadder
             Player player2 = new Player();
             Console.WriteLine($"The starting position of player is {player1.position}");
             Console.WriteLine("\n");
-            while (player1.position < win)
+            while ((player1.position < win) || (player2.position < win))
             {
                 Console.WriteLine("Player 1:");
                 player1.Game();
